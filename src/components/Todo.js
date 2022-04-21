@@ -1,29 +1,26 @@
 import React from 'react';
 
-const Todo = ({text, todo, todos, setTodos}) =>{
+const Todo = ({text, todo, todos, setTodos, index}) =>{
     //EVENTS CODE
-    const deleteHandler = () => {
-        setTodos(todos.filter((el) => el.id !== todo.id));
-
+    const deleteHandler = (i) => {
+        // console.log(i)
+        let tempTodos = [...todos];
+        tempTodos.splice(i,1);
+        setTodos(tempTodos);
     };
-    const completeHandler = () => {
-        setTodos(todos.map(item => {
-            if(item.id === todo.id){
-                return{
-                    ...item, completed: !item.completed
-                };
-            }
-            return item;
-        }))
+    const completeHandler = (i) => {
+        let tempTodos = [...todos];
+        tempTodos[i].completed = !tempTodos[i].completed;
+        setTodos(tempTodos);
     };
 
     return (
         <div className="todo">
             <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>
-            <button onClick={completeHandler} className="complete-btn">
+            <button onClick={()=>completeHandler(index)} className="complete-btn">
                 <i className="fas fa-check"></i>
             </button>
-            <button onClick={deleteHandler} className="trash-btn">
+            <button onClick={()=>deleteHandler(index)} className="trash-btn">
                 <i className="fas fa-trash"></i>
             </button>
         </div>
