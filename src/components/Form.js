@@ -10,7 +10,7 @@ const Form = ({inputText, todos, setTodos, setInputText, setStatus}) => {
     const submitToDoHandler = (e) => {
       e.preventDefault();
       setTodos([
-        ...todos, {text:inputText, completed: false}
+        ...todos, {text:inputText, completed: false, id: todos.length}
       ]);
       setInputText("");
     };
