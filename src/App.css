@@ -12,6 +12,7 @@ body {
 h1 {
   font-size: 3rem;
   font-weight: bold;
+  text-align: center;
 }
 .timer {
   font-size: 1.5rem;
